@@ -32,24 +32,27 @@ function LimpiarCaja() {
 }
 
 function generarNumeroSecreto() {
-  let numeroGenerado = Math.floor(Math.random() * numeroMaximo) + 1;
   if (listaNumerosSorteados.length === numeroMaximo) {
     asignTextoElemento("p", "Todos los números ya han sido sorteados. Reinicia el juego.");
-  } else {
-    if (listaNumerosSorteados.includes(numeroGenerado)) {
-      return generarNumeroSecreto(); // Recursivamente genera un nuevo número si ya fue sorteado
-    } else {
-      listaNumerosSorteados.push(numeroGenerado);
-      return numeroGenerado;
-    }
+    document.getElementById("valorUsuario").disabled = true;
+    return null;
   }
+
+  let numeroGenerado;
+  do {
+    numeroGenerado = Math.floor(Math.random() * numeroMaximo) + 1;
+  } while (listaNumerosSorteados.includes(numeroGenerado));
+
+  listaNumerosSorteados.push(numeroGenerado);
+  return numeroGenerado;
 }
 
 function condicionesIniciales() {
   asignTextoElemento("h1", "Adivina el número");
-  asignTextoElemento("p", "Indica un número entre el 1 al ${numeroMaximo}");
+  asignTextoElemento("p", `Indica un número entre el 1 al ${numeroMaximo}`);
   numeroSecreto = generarNumeroSecreto();
   intentos = 1;
+  document.getElementById("valorUsuario").disabled = false;
 }
 
 function reiniciarJuego() {
