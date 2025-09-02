@@ -112,3 +112,35 @@ body{
     font-size: 24px;
     font-weight: 400;
 }
+
+@media(max-width:1200px){
+    .presentacion{
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .presentacion__contenido{
+        width: 100%;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .presentacion__enlaces{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .presentacion__enlaces__link{
+        width: 100%;
+    }
+
+    .header{
+        padding: 2% 5% 0% 5%;
+    }
+
+    .header__menu{
+        gap: 40px;
+        justify-content: center;
+    }
+}
